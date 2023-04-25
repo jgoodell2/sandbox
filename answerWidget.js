@@ -1,6 +1,6 @@
 /**
- * Ratio Problem Template WebComponent
- * @author Jim Goodell
+ * Answer Widget WebComponent
+ * @author Aaron Goodell
  */
  customElements.define('answer-widget', class extends HTMLElement {
   connectedCallback() {
