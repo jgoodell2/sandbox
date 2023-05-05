@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/temp_bkt_fit.js"></script>
+    <script src="js/answerWidget.js"></script>
+
+</head>
+<body>
+
+     <answer-widget id="thisAnswerWidget" onClick="answerWidgetAction(this.value)"></answer-widget>
+    
+     <script>
+        var data = [0,1,1,1];
+        var model = jimsimpleBKTInitModel(data);
+        //alert(model.learned);
+        //model = jimsimpleBKTUpdateModel(1, model);
+        //var answerWidget = document.querySelector("answer-widget");
+
+        function answerWidgetAction(val) {
+            //alert(event.composedPath());
+            alert(val);
+            alert(document.getElementsByTagName('answer-widget')[0].attributes[2].value);
+            //model = jimsimpleBKTUpdateModel(textVal, model);
+            //alert(model.learned);
+        }
+    </script>
+</body>
+</html>

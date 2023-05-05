@@ -33,7 +33,7 @@
     ${this.getAttribute('variable-letter')}</i></sub></span>&nbsp;=&nbsp;<span class="frac"><sup>
     ${this.getAttribute('numerator-right')}</sup><span>&frasl;</span><sub>
     ${this.getAttribute('denominator-right')}</sub></span></p></p><p><i>r</i>&nbsp;=&nbsp;
-    <input id="response" type="text"></input></p></div>`;
+    </p></div>`;
   }
 });
 /**
