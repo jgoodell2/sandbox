@@ -1,0 +1,120 @@
+{
+  "@context": [
+      "https://github.com/jgoodell2/sandbox/scdContext.jsonld",
+          {
+            "@version": "2023",
+            "@protected": true,
+
+            "id": "@id",
+            "type": "@type",
+
+            "CompetencyDefinition": {
+                "@id": "https://github.com/jgoodell2/sandbox/scdContext.jsonld#CompetencyDefinition",
+                "@context": {
+                    "@version": "2023",
+                    "@protected": true,
+                    "type": "@type",
+                    "schema": "http://schema.org/",
+
+                    "competencyStatement": "rdf:langString",
+                    "competencyLevel": "RubricCriterionLevel",
+                    "description": "rdf:langString",
+                    "hasCompetencyFramework": "@id",
+                    "hasCriterion": "Criterion",
+                    "id": "@id",
+                    "name": "rdf:langString",
+                    "referenceCode": "rdf:Literal",
+                    "resourceAssociation": "rdfs:Resource",
+        		    "competencyType": "skos:Concept",
+        		    "competencyTypeLabel": "rdf:langString"
+                }
+            },
+
+            "CompetencyFramework": {
+                "@id": "https://github.com/jgoodell2/sandbox/scdContext.jsonld#CompetencyFramework",
+                "@context": {
+                    "@version": "2023",
+                    "@protected": true,
+                    "type": "@type",
+                    "schema": "http://schema.org/",  
+
+                    "name": "rdf:langString",
+                    "description": "rdf:langString",
+                    "hasCompetencyDefinition": "CompetencyDefinition",
+                    "hasRubric": "Rubric",
+                    "id": "@id",
+                    "originalFramework": "rdfs:Resource",
+                    "resourceAssociation": "ResourceAssociaiton"
+                }
+            },
+
+            "CompetencyAssociation": {
+                "@id": "https://github.com/jgoodell2/sandbox/scdContext.jsonld#CompetencyAssociation",
+                "@context": {
+                    "@version": "2023",
+                    "@protected": true,
+                    "type": "@type",
+                    "schema": "http://schema.org/",
+
+                    "associationType": "skos:Concept",
+                    "destination": "rdfs:Resource",
+                    "id": "@id",
+                    "source": "rdfs:Resource",
+                    "hasCompetencyFramrwork": "CompetencyFramework",
+                    "weight": "rdfs:Literal"
+                }
+            },
+
+            "Rubric": {
+                "@id": "https://github.com/jgoodell2/sandbox/scdContext.jsonld#Rubric",
+                "@context": {
+                    "@version": "2023",
+                    "@protected": true,
+                    "type": "@type",
+                    "schema": "http://schema.org/",
+
+                    "id": "@id",
+                    "description":"rdf:langString",
+                    "method":"skos:Concept",
+                    "name":"rdf:langString",
+                    "rubricCriterion":"RubricCriterion"
+                }
+            },
+
+            "RubricCriterion": {
+                "@id": "https://github.com/jgoodell2/sandbox/scdContext.jsonld#RubricCriterion",
+                "@context": {
+                    "@version": "2023",
+                    "@protected": true,
+                    "type": "@type",
+                    "schema": "http://schema.org/",
+
+                    "id": "@id",
+                    "name": "rdf:langString",
+                    "category": "rdf:langString",
+                    "description": "rdf:langString",
+                    "position": "rdf:langString",
+                    "rubricCriterionLevel": "RubricCriterionLevel",
+                    "weight": "rdfs:Literal"
+                }
+            },
+
+            "RubricCriterionLevel": {
+                "@id": "https://github.com/jgoodell2/sandbox/scdContext.jsonld#RubricCriterionLevel",
+                "@context": {
+                    "@version": "2023",
+                    "@protected": true,
+                    "type": "@type",
+                    "schema": "http://schema.org/",
+
+                    "id": "@id",
+                    "name": "rdf:langString",
+                    "description": "rdf:langString",
+                    "feedback": "rdf:langString",
+                    "position": "rdfs:Literal",
+                    "score": "rdfs:Literal"
+                }
+            }
+        }
+    ]
+}
