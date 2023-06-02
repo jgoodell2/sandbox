@@ -1,0 +1,56 @@
+{
+    "@context": {
+        "scd": "https://opensource.ieee.org/scd/",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "scd:associationType": {
+            "@type": "@id"
+        },
+        "scd:competencyStatement" : {
+            "@container": "@language"
+        },
+        "scd:competencyLevel" : {
+            "@type": "@id"
+        },
+        "scd:description" : {
+            "@container": "@language"
+        },
+        "scd:destination": {
+            "@type": "@id"
+        },
+        "scd:hasCompetencyDefinition": {
+            "@type": "@id"
+        },
+        "scd:hasCompetencyFramework": {
+            "@type": "@id"
+        },
+        "scd:hasCriterion": {
+            "@type": "@id"
+        },
+        "scd:hasRubric": {
+            "@type": "@id"
+        },
+        "scd:name" : {
+            "@container": "@language"
+        },
+        "scd:originalFramework": {
+            "@type": "@id"
+        }, 
+        "scd:referenceCode": {},
+        "scd:resourceAssociation": {
+            "@type": "@id"
+        },
+        "scd:source": {
+            "@type": "@id"
+        },
+        "scd:type": {
+            "@type": "@id"
+        },
+        "scd:typeLabel": {
+            "@container": "@language"
+        },
+        "scd:weight": {
+            "@type": "xsd:decimal"
+        }
+    }
+}

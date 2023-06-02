@@ -1,0 +1,119 @@
+{
+    "@context": {
+        "scd": "https://opensource.ieee.org/scd/",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "scd:associationType": {
+            "@type": "@id"
+        },
+        "scd:competencyStatement" : {
+            "@container": "@language"
+        },
+        "scd:competencyLevel" : {
+            "@type": "@id"
+        },
+        "scd:description" : {
+            "@container": "@language"
+        },
+        "scd:destination": {
+            "@type": "@id"
+        },
+        "scd:hasCompetencyDefinition": {
+            "@type": "@id"
+        },
+        "scd:hasCompetencyFramework": {
+            "@type": "@id"
+        },
+        "scd:hasCriterion": {
+            "@type": "@id"
+        },
+        "scd:hasRubric": {
+            "@type": "@id"
+        },
+        "scd:name" : {
+            "@container": "@language"
+        },
+        "scd:originalFramework": {
+            "@type": "@id"
+        }, 
+        "scd:referenceCode": {},
+        "scd:resourceAssociation": {
+            "@type": "@id"
+        },
+        "scd:source": {
+            "@type": "@id"
+        },
+        "scd:type": {
+            "@type": "@id"
+        },
+        "scd:typeLabel": {
+            "@container": "@language"
+        },
+        "scd:weight": {
+            "@type": "xsd:decimal"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "https://example.org/cd/001",
+            "@type": "scd:CompetencyDefinition",
+            "scd:competencyStatement": {
+                "en": "example competency statement"
+            },
+            "scd:description": {
+              "en": "description of an example competency statement"
+            },
+            "scd:competencyLevel": "https://example.org/level/001",
+            "scd:hasCompetencyFramework": "https://example.org/cf/001",
+            "scd:hasCriterion": "https://example.org/criterion/001",
+            "scd:hasPart": "https://example.org/cd/002",
+            "scd:name": {
+                "en": "example skill"
+            },
+            "scd:referenceCode": "ex001",
+            "scd:resourceAssociation": "https://example.org/ra/001-002",
+            "scd:type": {
+                "@type": "skos:Concept",
+                "skos:prefLabel": "Skill"
+            },
+            "scd:typeLabel": {
+                "en": "Skill"
+            }
+        },{
+            "@id": "https://example.org/level/001",
+            "@type": "scd:RubricCriterionLevel"
+        },{
+            "@id": "https://example.org/cf/001",
+            "@type": "scd:CompetencyFramework",
+            "scd:name": {
+                "en": "example framework"
+            },
+            "scd:description": {
+                "en": "description of an example competency framework"
+            },
+            "scd:hasCompetencyDefinition": "https://example.org/cd/001",
+            "scd:hasRubric": "https://example.org/rubric/001",
+            "scd:originalFramework": "https://example.org/cf/000",
+            "scd:resourceAssociation": "https://example.org/ra/001-002"
+        },{
+            "@id": "https://example.org/criterion/001",
+            "@type": "scd:Criterion"
+        },{
+            "@id": "https://example.org/ra/001-002",
+            "@type": "scd:ResourceAssociation",
+            "scd:associationType": "scd:hasPart",
+            "scd:destination":  "https://example.org/cd/002",
+            "scd:source":  "https://example.org/cd/001",
+            "scd:hasCompetencyFramework": "https://example.org/cf/001",
+            "scd:weight": 100
+
+        },{
+            "@id": "https://example.org/rubric/001",
+            "@type": "scd:Rubric"
+        },
+        {
+            "@id": "https://example.org/cd/002",
+            "@type": "scd:CompetencyDefinition"
+        }
+    ]
+}
