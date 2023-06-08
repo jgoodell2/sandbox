@@ -1,0 +1,41 @@
+@prefix scd: <https://opensource.ieee.org/scd/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/cd/002> a scd:CompetencyDefinition .
+
+<https://example.org/criterion/001> a scd:Criterion .
+
+<https://example.org/level/001> a scd:RubricCriterionLevel .
+
+<https://example.org/rubric/001> a scd:Rubric .
+
+<https://example.org/cd/001> a scd:CompetencyDefinition ;
+    scd:competencyLevel <https://example.org/level/001> ;
+    scd:competencyStatement "example competency statement"@en ;
+    scd:description "description of an example competency statement"@en ;
+    scd:hasCompetencyFramework <https://example.org/cf/001> ;
+    scd:hasCriterion <https://example.org/criterion/001> ;
+    scd:hasPart "https://example.org/cd/002" ;
+    scd:name "example skill"@en ;
+    scd:referenceCode "ex001" ;
+    scd:resourceAssociation <https://example.org/ra/001-002> ;
+    scd:type [ a skos:Concept ;
+            skos:prefLabel "Skill" ] ;
+    scd:typeLabel "Skill"@en .
+
+<https://example.org/cf/001> a scd:CompetencyFramework ;
+    scd:description "description of an example competency framework"@en ;
+    scd:hasCompetencyDefinition <https://example.org/cd/001> ;
+    scd:hasRubric <https://example.org/rubric/001> ;
+    scd:name "example framework"@en ;
+    scd:originalFramework <https://example.org/cf/000> ;
+    scd:resourceAssociation <https://example.org/ra/001-002> .
+
+<https://example.org/ra/001-002> a scd:ResourceAssociation ;
+    scd:associationType scd:hasPart ;
+    scd:destination <https://example.org/cd/002> ;
+    scd:hasCompetencyFramework <https://example.org/cf/001> ;
+    scd:source <https://example.org/cd/001> ;
+    scd:weight 100.0 .
+
