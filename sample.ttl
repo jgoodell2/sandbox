@@ -2,13 +2,21 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://example.org/cd/002> a scd:CompetencyDefinition .
+<https://example.org/criterion/001> a scd:RubricCriterion ;
+    scd:category "An example rubric category."@en ;
+    scd:description "An example rubric description."@en ;
+    scd:name "An example rubric criterion."@en ;
+    scd:position 1.0 ;
+    scd:rubricCriterionLevel <https://example.org/level/001> ;
+    scd:weight 75.0 .
 
-<https://example.org/criterion/001> a scd:Criterion .
+<https://example.org/rubric/001> a scd:Rubric ;
+    scd:method <https://opensource.ieee.org/scd/Methods/manual> ;
+    scd:name "An example rubric"@en ;
+    scd:rubricCriterion "https://example.org/criterion/001" .
 
-<https://example.org/level/001> a scd:RubricCriterionLevel .
-
-<https://example.org/rubric/001> a scd:Rubric .
+<https://opensource.ieee.org/scd/Types/skill> a skos:Concept ;
+    skos:prefLabel "Skill" .
 
 <https://example.org/cd/001> a scd:CompetencyDefinition ;
     scd:competencyLevel <https://example.org/level/001> ;
@@ -20,20 +28,29 @@
     scd:name "example skill"@en ;
     scd:referenceCode "ex001" ;
     scd:resourceAssociation <https://example.org/ra/001-002> ;
-    scd:type [ a skos:Concept ;
-            skos:prefLabel "Skill" ] ;
+    scd:type <https://opensource.ieee.org/scd/Types/skill> ;
     scd:typeLabel "Skill"@en .
+
+<https://example.org/cd/002> a scd:CompetencyDefinition .
 
 <https://example.org/cf/001> a scd:CompetencyFramework ;
     scd:description "description of an example competency framework"@en ;
-    scd:hasCompetencyDefinition <https://example.org/cd/001> ;
+    scd:hasCompetencyDefinition <https://example.org/cd/001>,
+        <https://example.org/cd/002> ;
     scd:hasRubric <https://example.org/rubric/001> ;
     scd:name "example framework"@en ;
     scd:originalFramework <https://example.org/cf/000> ;
     scd:resourceAssociation <https://example.org/ra/001-002> .
 
+<https://example.org/level/001> a scd:RubricCriterionLevel ;
+    scd:description "An example rubric criterion level description."@en ;
+    scd:feedback "An example of rubric criterion level feedback."@en ;
+    scd:name "An example rubric criterion level."@en ;
+    scd:position 1.0 ;
+    scd:score 5.0 .
+
 <https://example.org/ra/001-002> a scd:ResourceAssociation ;
-    scd:associationType scd:hasPart ;
+    scd:associationType <https://opensource.ieee.org/scd/AssociationTypes/hasPart> ;
     scd:destination <https://example.org/cd/002> ;
     scd:hasCompetencyFramework <https://example.org/cf/001> ;
     scd:source <https://example.org/cd/001> ;

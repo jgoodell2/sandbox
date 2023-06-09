@@ -3,8 +3,18 @@
         "scd": "https://opensource.ieee.org/scd/",
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "scd:associationType": {
+        "id": {
+            "@id": "@id",
             "@type": "@id"
+        },
+        "scd:associationType": {
+            "@type": "@id",
+            "@context": {
+                "@base": "https://opensource.ieee.org/scd/AssociationTypes/"
+            }
+        },
+        "scd:category": {
+            "@container": "@language"
         },
         "scd:competencyStatement" : {
             "@container": "@language"
@@ -18,6 +28,9 @@
         "scd:destination": {
             "@type": "@id"
         },
+        "scd:feedback":{
+            "@container": "@language"
+        },
         "scd:hasCompetencyDefinition": {
             "@type": "@id"
         },
@@ -30,21 +43,39 @@
         "scd:hasRubric": {
             "@type": "@id"
         },
+        "scd:method": {
+            "@type": "@id",
+            "@context": {
+                "@base": "https://opensource.ieee.org/scd/Methods/"
+            }
+         },
         "scd:name" : {
             "@container": "@language"
         },
         "scd:originalFramework": {
             "@type": "@id"
+        },
+        "scd:position": {
+            "@type": "xsd:decimal"
         }, 
         "scd:referenceCode": {},
         "scd:resourceAssociation": {
             "@type": "@id"
         },
+        "scd:rubricCriterionLevel": {
+            "@type": "@id"
+        },
+        "scd:score": {
+            "@type": "xsd:decimal"
+        },
         "scd:source": {
             "@type": "@id"
         },
         "scd:type": {
-            "@type": "@id"
+            "@type": "@id",
+            "@context": {
+                "@base": "https://opensource.ieee.org/scd/Types/"
+            }
         },
         "scd:typeLabel": {
             "@container": "@language"
