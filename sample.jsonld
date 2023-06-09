@@ -3,8 +3,15 @@
         "scd": "https://opensource.ieee.org/scd/",
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "id": {
+            "@id": "@id",
+            "@type": "@id"
+        },
         "scd:associationType": {
             "@type": "@id"
+        },
+        "scd:category": {
+            "@container": "@language"
         },
         "scd:competencyStatement" : {
             "@container": "@language"
@@ -18,6 +25,9 @@
         "scd:destination": {
             "@type": "@id"
         },
+        "scd:feedback":{
+            "@container": "@language"
+        },
         "scd:hasCompetencyDefinition": {
             "@type": "@id"
         },
@@ -30,15 +40,27 @@
         "scd:hasRubric": {
             "@type": "@id"
         },
+        "scd:method": {
+            "@type": "@id"
+        },
         "scd:name" : {
             "@container": "@language"
         },
         "scd:originalFramework": {
             "@type": "@id"
+        },
+        "scd:position": {
+            "@type": "xsd:decimal"
         }, 
         "scd:referenceCode": {},
         "scd:resourceAssociation": {
             "@type": "@id"
+        },
+        "scd:rubricCriterionLevel": {
+            "@type": "@id"
+        },
+        "scd:score": {
+            "@type": "xsd:decimal"
         },
         "scd:source": {
             "@type": "@id"
@@ -55,7 +77,23 @@
     },
     "@graph": [
         {
-            "@id": "https://example.org/cd/001",
+            "id": "https://example.org/cf/001",
+            "@type": "scd:CompetencyFramework",
+            "scd:name": {
+                "en": "example framework"
+            },
+            "scd:description": {
+                "en": "description of an example competency framework"
+            },
+            "scd:hasCompetencyDefinition": [
+                "https://example.org/cd/001", 
+                "https://example.org/cd/002"
+            ],
+            "scd:hasRubric": "https://example.org/rubric/001",
+            "scd:originalFramework": "https://example.org/cf/000",
+            "scd:resourceAssociation": "https://example.org/ra/001-002"
+        },{
+            "id": "https://example.org/cd/001",
             "@type": "scd:CompetencyDefinition",
             "scd:competencyStatement": {
                 "en": "example competency statement"
@@ -80,40 +118,56 @@
                 "en": "Skill"
             }
         },{
-            "@id": "https://example.org/level/001",
-            "@type": "scd:RubricCriterionLevel"
+            "id": "https://example.org/cd/002",
+            "@type": "scd:CompetencyDefinition"
         },{
-            "@id": "https://example.org/cf/001",
-            "@type": "scd:CompetencyFramework",
-            "scd:name": {
-                "en": "example framework"
-            },
-            "scd:description": {
-                "en": "description of an example competency framework"
-            },
-            "scd:hasCompetencyDefinition": "https://example.org/cd/001",
-            "scd:hasRubric": "https://example.org/rubric/001",
-            "scd:originalFramework": "https://example.org/cf/000",
-            "scd:resourceAssociation": "https://example.org/ra/001-002"
-        },{
-            "@id": "https://example.org/criterion/001",
-            "@type": "scd:Criterion"
-        },{
-            "@id": "https://example.org/ra/001-002",
+            "id": "https://example.org/ra/001-002",
             "@type": "scd:ResourceAssociation",
             "scd:associationType": "scd:hasPart",
             "scd:destination":  "https://example.org/cd/002",
             "scd:source":  "https://example.org/cd/001",
             "scd:hasCompetencyFramework": "https://example.org/cf/001",
             "scd:weight": 100
-
         },{
-            "@id": "https://example.org/rubric/001",
-            "@type": "scd:Rubric"
-        },
-        {
-            "@id": "https://example.org/cd/002",
-            "@type": "scd:CompetencyDefinition"
+            "id": "https://example.org/rubric/001",
+            "@type": "scd:Rubric",
+            "scd:method": {
+                "@type": "skos:Concept",
+                "skos:prefLabel": "manual"
+            },
+            "scd:name": {
+                "en": "An example rubric"
+            },
+            "scd:rubricCriterion" : "https://example.org/criterion/001"
+        },{
+            "id": "https://example.org/criterion/001",
+            "@type": "scd:RubricCriterion",
+            "scd:name": {
+                "en": "An example rubric criterion."
+            },
+            "scd:category": {
+                "en": "An example rubric category."
+            },
+            "scd:description":{
+                "en": "An example rubric description."
+            }, 
+            "scd:position": 1,
+            "scd:rubricCriterionLevel": "https://example.org/level/001",
+            "scd:weight": 75
+        },{
+            "id": "https://example.org/level/001",
+            "@type": "scd:RubricCriterionLevel",
+            "scd:name": {
+                "en": "An example rubric criterion level."
+            },
+            "scd:description":{
+                "en": "An example rubric criterion level description."
+            }, 
+            "scd:feedback":{
+                "en": "An example of rubric criterion level feedback."
+            }, 
+            "scd:position": 1,
+            "scd:score": 5
         }
     ]
 }
