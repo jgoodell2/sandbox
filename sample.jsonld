@@ -1,6 +1,7 @@
 {
     "@context": {
         "scd": "https://opensource.ieee.org/scd/",
+        "scdMethod": "https://opensource.ieee.org/scd/Methods#",
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "id": {
@@ -8,7 +9,10 @@
             "@type": "@id"
         },
         "scd:associationType": {
-            "@type": "@id"
+            "@type": "@id",
+            "@context": {
+                "@base": "https://opensource.ieee.org/scd/AssociationTypes/"
+            }
         },
         "scd:category": {
             "@container": "@language"
@@ -41,8 +45,11 @@
             "@type": "@id"
         },
         "scd:method": {
-            "@type": "@id"
-        },
+            "@type": "@id",
+            "@context": {
+                "@base": "https://opensource.ieee.org/scd/Methods/"
+            }
+         },
         "scd:name" : {
             "@container": "@language"
         },
@@ -66,7 +73,10 @@
             "@type": "@id"
         },
         "scd:type": {
-            "@type": "@id"
+            "@type": "@id",
+            "@context": {
+                "@base": "https://opensource.ieee.org/scd/Types/"
+            }
         },
         "scd:typeLabel": {
             "@container": "@language"
@@ -112,6 +122,7 @@
             "scd:resourceAssociation": "https://example.org/ra/001-002",
             "scd:type": {
                 "@type": "skos:Concept",
+                "@id": "skill",
                 "skos:prefLabel": "Skill"
             },
             "scd:typeLabel": {
@@ -123,7 +134,7 @@
         },{
             "id": "https://example.org/ra/001-002",
             "@type": "scd:ResourceAssociation",
-            "scd:associationType": "scd:hasPart",
+            "scd:associationType": "hasPart",
             "scd:destination":  "https://example.org/cd/002",
             "scd:source":  "https://example.org/cd/001",
             "scd:hasCompetencyFramework": "https://example.org/cf/001",
@@ -131,10 +142,7 @@
         },{
             "id": "https://example.org/rubric/001",
             "@type": "scd:Rubric",
-            "scd:method": {
-                "@type": "skos:Concept",
-                "skos:prefLabel": "manual"
-            },
+            "scd:method": "manual",
             "scd:name": {
                 "en": "An example rubric"
             },

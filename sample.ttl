@@ -11,10 +11,12 @@
     scd:weight 75.0 .
 
 <https://example.org/rubric/001> a scd:Rubric ;
-    scd:method [ a skos:Concept ;
-            skos:prefLabel "manual" ] ;
+    scd:method <https://opensource.ieee.org/scd/Methods/manual> ;
     scd:name "An example rubric"@en ;
     scd:rubricCriterion "https://example.org/criterion/001" .
+
+<https://opensource.ieee.org/scd/Types/skill> a skos:Concept ;
+    skos:prefLabel "Skill" .
 
 <https://example.org/cd/001> a scd:CompetencyDefinition ;
     scd:competencyLevel <https://example.org/level/001> ;
@@ -26,8 +28,7 @@
     scd:name "example skill"@en ;
     scd:referenceCode "ex001" ;
     scd:resourceAssociation <https://example.org/ra/001-002> ;
-    scd:type [ a skos:Concept ;
-            skos:prefLabel "Skill" ] ;
+    scd:type <https://opensource.ieee.org/scd/Types/skill> ;
     scd:typeLabel "Skill"@en .
 
 <https://example.org/cd/002> a scd:CompetencyDefinition .
@@ -49,7 +50,7 @@
     scd:score 5.0 .
 
 <https://example.org/ra/001-002> a scd:ResourceAssociation ;
-    scd:associationType scd:hasPart ;
+    scd:associationType <https://opensource.ieee.org/scd/AssociationTypes/hasPart> ;
     scd:destination <https://example.org/cd/002> ;
     scd:hasCompetencyFramework <https://example.org/cf/001> ;
     scd:source <https://example.org/cd/001> ;
