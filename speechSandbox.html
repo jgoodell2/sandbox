@@ -1,0 +1,13 @@
+<script>
+  // Synthesis basics
+  var utterance = new SpeechSynthesisUtterance("This is some text.");
+utterance.voice = window.speechSynthesis.getVoices()[0];
+utterance.rate = 1.2;
+utterance.pitch = 1.1;
+
+utterance.onend = function() {
+  console.log("Speech finished.");
+};
+
+window.speechSynthesis.speak(utterance);
+</script>
