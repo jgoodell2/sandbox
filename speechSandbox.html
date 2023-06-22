@@ -28,7 +28,7 @@ window.speechSynthesis.speak(utterance);
         recognition.onresult = function(event) {
           const transcript = event.results[event.results.length - 1][0].transcript;
           // Do something with the transcribed text (e.g., display it on the webpage)
-          console.log(transcript);
+          alert(transcript);
         };
 
         // Event handler for errors
@@ -46,7 +46,7 @@ window.speechSynthesis.speak(utterance);
           recognition.stop();
         }
       } else {
-        console.error('Web Speech API is not supported in this browser.');
+        alert('Web Speech API is not supported in this browser.');
       }
 
 </script>
