@@ -1,4 +1,6 @@
-<script>
+<html>
+  
+ <script>
   // Synthesis basics
   var utterance = new SpeechSynthesisUtterance("This is some text.");
 utterance.voice = window.speechSynthesis.getVoices()[0];
@@ -10,4 +12,48 @@ utterance.onend = function() {
 };
 
 window.speechSynthesis.speak(utterance);
+   
+   // Listening
+   function initSpeechRecognition() {
+       // Check if the browser supports the Web Speech API
+      if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        // Create a new instance of SpeechRecognition
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+        // Set the parameters
+        recognition.continuous = true;  // Keep listening even after speech stops
+        recognition.interimResults = true;  // Show interim results
+
+        // Event handler for when speech is recognized
+        recognition.onresult = function(event) {
+          const transcript = event.results[event.results.length - 1][0].transcript;
+          // Do something with the transcribed text (e.g., display it on the webpage)
+          console.log(transcript);
+        };
+
+        // Event handler for errors
+        recognition.onerror = function(event) {
+          console.error('Speech recognition error:', event.error);
+        };
+
+        // Start the speech recognition
+        function startRecognition() {
+          recognition.start();
+        }
+
+        // Stop the speech recognition
+        function stopRecognition() {
+          recognition.stop();
+        }
+      } else {
+        console.error('Web Speech API is not supported in this browser.');
+      }
+   }
 </script>
+  
+  <body>
+
+    <button onclick="initSpeechRecognition()">Listen</button>
+    
+  </body>
+</html>
