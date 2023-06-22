@@ -13,8 +13,8 @@ utterance.onend = function() {
 
 window.speechSynthesis.speak(utterance);
    
-   // Listening
-   function initSpeechRecognition() {
+// Set up for listening
+   
        // Check if the browser supports the Web Speech API
       if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         // Create a new instance of SpeechRecognition
@@ -48,12 +48,13 @@ window.speechSynthesis.speak(utterance);
       } else {
         console.error('Web Speech API is not supported in this browser.');
       }
-   }
+
 </script>
   
   <body>
 
-    <button onclick="initSpeechRecognition()">Listen</button>
+    <button onclick="startRecognition()">Start Listening</button>
+    <button onclick="stopRecognition()">Stop Listening</button>
     
   </body>
 </html>
