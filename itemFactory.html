@@ -20,7 +20,8 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
   <button type="button" onclick="calculate()">Calculate</button><br><br>
 
   <label for="d">Result:</label>
-  <text rows="4" cols="50" id="d" name="d">
+  <div id="d" name="d"></div>
+  
                     
 </form>
 
@@ -44,7 +45,7 @@ function calculate() {
     }
   }
 
-  document.getElementById("d").value = result;
+  document.getElementById("d").innerHtml = result;
 }
 </script>
 
