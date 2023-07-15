@@ -20,9 +20,8 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
   <label for="template">c:</label>
 <textarea id="template" name="template" rows="4" cols="50">
-
-</textarea>  
-  <span>Example: ${a} + ${b} + ${c} = d</span>
+Enter template here.</textarea>  
+  <p>Example: ${a} + ${b} + ${c} = d</p>
   <button type="button" onclick="parse()">Parse</button>
   <br><br>
   <button type="button" onclick="calculate()">Calculate</button><br><br>
@@ -47,7 +46,7 @@ for (let i = 0; i < params.length; i++) {
   innerArr.push(0);
   innerArr.push(0);
   innerArr.push(0);
-  document.getElementById("d").innerHTML = arr;
+  document.getElementById("d").innerHTML = arr.toString;
 }
   }
   
