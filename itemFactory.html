@@ -32,6 +32,25 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
   <div id="d" name="d">--result here--</div>
 
 <script>
+  function parse() {
+    const str = "${a} + ${b} + ${c} = d";
+const regex = /\${(.*?)}/g;
+const params = [];
+let match;
+while ((match = regex.exec(str))) {
+  params.push(match[1]);
+}
+const arr = [];
+for (let i = 0; i < params.length; i++) {
+  const innerArr = [];
+  innerArr.push(params[i]);
+  innerArr.push(0);
+  innerArr.push(0);
+  innerArr.push(0);
+  document.getElementById("d").innerHTML = arr;
+}
+  }
+  
 function calculate() {
   var a_min = parseInt(document.getElementById("a").min);
   var a_max = parseInt(document.getElementById("a").max);
