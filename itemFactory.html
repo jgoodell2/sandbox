@@ -17,6 +17,12 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
   <label for="c">c:</label>
   <input type="number" id="c" name="c" min="0" max="10"><br><br>
 
+  <label for="template">c:</label>
+<textarea id="template" name="template" rows="4" cols="50">
+ ${fn:escapeXml('<p> + ${a} + ${b} + ${c} = d</p>')}
+</textarea>  
+
+  
   <button type="button" onclick="calculate()">Calculate</button><br><br>
               
 </form>
