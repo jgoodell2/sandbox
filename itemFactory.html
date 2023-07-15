@@ -1,0 +1,53 @@
+<!-- stated with this prompt but needed to fix: create a web form with JavaScript code to autogenerate variations of the following html allowing the user to enter minimum and maximum values for a, b, and c iterates through all possible values of 
+a, b, and c using nested for loops. It then calculates the sum of each combination of values and outputs it: <p> ${a} + ${b} + ${c} = ${d}<\p> -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Autogenerate Variations of HTML</h2>
+
+<form>
+  <label for="a">a:</label>
+  <input type="number" id="a" name="a" min="0" max="10"><br><br>
+
+  <label for="b">b:</label>
+  <input type="number" id="b" name="b" min="0" max="10"><br><br>
+
+  <label for="c">c:</label>
+  <input type="number" id="c" name="c" min="0" max="10"><br><br>
+
+  <button type="button" onclick="calculate()">Calculate</button><br><br>
+
+  <label for="d">Result:</label>
+  <input type="text" id="d" name="d">
+</form>
+
+<script>
+function calculate() {
+  var a_min = parseInt(document.getElementById("a").min);
+  var a_max = parseInt(document.getElementById("a").max);
+  var b_min = parseInt(document.getElementById("b").min);
+  var b_max = parseInt(document.getElementById("b").max);
+  var c_min = parseInt(document.getElementById("c").min);
+  var c_max = parseInt(document.getElementById("c").max);
+
+  var result = "";
+  
+  for (var a = a_min; a <= a_max; a++) {
+    for (var b = b_min; b <= b_max; b++) {
+      for (var c = c_min; c <= c_max; c++) {
+        var d = a + b + c;
+        result += "<p>" + a + " + " + b + " + " + c + " = " + d + "</p>";
+      }
+    }
+  }
+
+  document.getElementById("d").value = result;
+}
+</script>
+
+</body>
+</html>
+
+
