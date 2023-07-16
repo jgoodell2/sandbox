@@ -38,8 +38,6 @@ const params = [];
 let match;
 while ((match = regex.exec(str))) {
   params.push(match[1]);
-    console.log(match[1]);
-  alert(match[1]);
 }
 const arr = [];
 for (let i = 0; i < params.length; i++) {
@@ -48,9 +46,10 @@ for (let i = 0; i < params.length; i++) {
   innerArr.push(0);
   innerArr.push(0);
   innerArr.push(0);
-  alert(arr);
+  arr.push(innerArr);
 }
-  }
+    alert(arr); 
+}
   
 function calculate() {
   var a_min = parseInt(document.getElementById("a").min);
