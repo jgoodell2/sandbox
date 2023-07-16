@@ -34,7 +34,7 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
   <script>
     function parseTemplate() {
-      const str = template.value;
+      const str = document.getElementById("template").value;
       const regex = /\${(.*?)}/g;
       const params = [];
       let match;
