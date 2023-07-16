@@ -32,7 +32,7 @@ Enter template here.</textarea>
 
 <script>
   function parseTemplate() {
-    const str = "${a} + ${b} + ${c} = d";
+    const str = template.value;
 const regex = /\${(.*?)}/g;
 const params = [];
 let match;
