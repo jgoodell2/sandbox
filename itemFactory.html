@@ -55,7 +55,7 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
         arr.push(innerArr);
       }
       // Create form table to enter parameter ranges and rules based on template parameters
-      const paramFormTableHTML = "<table>";
+      var paramFormTableHTML = "<table>";
       for (let i = 0; i < arr.length; i++) {
         // Each row has inputs for min max and step 
         paramFormTableHTML += '<tr><td>' + arr[i][0] +':</td><td>min value:<input type="number" id="param' + i + 'min" name="param' + i + 'min"></td>';
