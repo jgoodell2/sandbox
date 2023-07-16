@@ -4,23 +4,23 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
 <!DOCTYPE html>
 <html>
-<body>
+<body onLoad="resetPage()">
 
   <h2>Autogenerate Variations of OER Assessment Items and Other HTML Micro-Learning Experiences</h2>
 
-  <div id="step1" style="visibility:visible">
+  <div id="step1">
     <h3>Step 1: Enter Parameterized HTML for Interactive Item</h3>
     <textarea id="template" name="template" rows="4" cols="50">Enter template html with parameters here.</textarea>  
-    <p>Example: \<p\>Solve for d: ${a} + ${b} + ${c} = d\</p\></p>
+    <p>Example: \<p>Solve for d: ${a} + ${b} + ${c} = d\</p></p>
     <button type="button" onclick="parseTemplate()">Parse Template</button><br><br>
   </div>
   
-  <div id="step2" style="visibility:visible">
+  <div id="step2">
     <h3>Step 1: Enter Parameterized HTML</h3>
     <form id="paramForm"></form>
   </div>
   
-  <div id="step3" style="visibility:visible">
+  <div id="step3">
     <h3>Step 3: Enter Metadata</h3>
     <form id="metadataForm">
       <label labelFor="xApiProfileUrl">xAPI Profile URL:</label>
@@ -33,6 +33,12 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
 
   <script>
+    function resetPage() {
+      document.getElementById("step1").style.visibility = "vissible"; // Show step 2
+      document.getElementById("step2").style.visibility = "hidden"; // Show step 2
+      document.getElementById("step3").style.visibility = "hidden"; // Show step 2
+    }
+    
     function parseTemplate() {
       const str = document.getElementById("template").value;
       const regex = /\${(.*?)}/g;
@@ -66,7 +72,7 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
     }
   
 
-    function gotoStep3 {
+    function gotoStep3() {
       document.getElementById("step3").style.visibility = "visible"; // Show step 3
     }
     
