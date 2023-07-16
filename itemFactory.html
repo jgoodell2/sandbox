@@ -4,7 +4,7 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
 <!DOCTYPE html>
 <html>
-<body onload="resetPage()">
+<body>
 
   <h2>Autogenerate Variations of OER Assessment Items and Other HTML Micro-Learning Experiences</h2>
 
@@ -33,12 +33,9 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
 
   <script>
-    function resetPage() {
       document.getElementById("step1").style.visibility = "vissible"; // Show step 1
       document.getElementById("step2").style.visibility = "hidden"; // Show step 2
       document.getElementById("step3").style.visibility = "hidden"; // Show step 3
-      alert("Debug: Page loaded");
-    }
     
     function parseTemplate() {
       const str = document.getElementById("template").value;
