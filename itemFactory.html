@@ -1,5 +1,3 @@
-<!-- stated with this prompt but needed to fix: create a web form with JavaScript code to autogenerate variations of the following html allowing the user to enter minimum and maximum values for a, b, and c iterates through all possible values of 
-a, b, and c using nested for loops. It then calculates the sum of each combination of values and outputs it: <p> ${a} + ${b} + ${c} = ${d}<\p> -->
 <!-- https://htmlpreview.github.io/?https://github.com/jgoodell2/sandbox/blob/main/itemFactory.html -->
 
 <!DOCTYPE html>
@@ -10,32 +8,45 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
 
   <div id="step1">
     <h3>Step 1: Enter Parameterized HTML for Interactive Item</h3>
-    <textarea id="template" name="template" rows="4" cols="50">Enter template html with parameters here.</textarea>  
-    <p>Example: \<p>Solve for d: ${a} + ${b} + ${c} = d\</p></p>
+    Enter template html with parameters here.<br>
+    <textarea id="template" name="template" rows="4" cols="50">&lt;p&gt;Solve for x: ${a} + ${b} + ${c} = x&lt;/p&gt;</textarea><br>
+    <i>Example: <textarea style="background-color: lightgrey" rows="1" cols="42" readonly>&lt;p&gt;Solve for x: ${a} + ${b} + ${c} = x&lt;/p&gt;</textarea></i><br>
     <button type="button" onclick="parseTemplate()">Parse Template</button><br><br>
   </div>
   
   <div id="step2">
     <h3>Step 2: Enter Ranges and Rules for Autogeneration</h3>
     <form id="paramForm"></form>
+    <button type="button" onclick="gotoStep3()">Next</button><br><br>
   </div>
   
   <div id="step3">
     <h3>Step 3: Enter Metadata</h3>
     <form id="metadataForm">
+      <label labelFor="itemId">Item Id (unique id within repository):</label>
+      <input type="text" id="itemId" size="60">*<br>
+      <label labelFor="itemUrl">Item Url (if known the full url to the hosted item):</label>
+      <input type="text" id="itemUrl" size="60"><br>
       <label labelFor="xApiProfileUrl">xAPI Profile URL:</label>
-      <input type="text" id="xApiProfileUrl">*
+      <input type="text" id="xApiProfileUrl" size="60">*<br>
     </form>
+    <button type="button" onclick="gotoStep4()">Next</button><br><br>
   </div>
-  
-  Result:
-  <div id="d" name="d">--result here--</div>
 
+  <div id="step4">
+    <h3>Step 4: Review</h3>
+    <p id="resultStats"></p>
+    <button type="button" onclick="gotoStep5()">Autogenerate Items</button><br><br>
+  </div>
+
+  <br><br>
+  <div id="output">--result here--</div>
 
   <script>
-      document.getElementById("step1").style.visibility = "vissible"; // Show step 1
-      document.getElementById("step2").style.visibility = "hidden"; // Show step 2
-      document.getElementById("step3").style.visibility = "hidden"; // Show step 3
+    document.getElementById("step1").style.visibility = "vissible"; // Show step 1
+    document.getElementById("step2").style.visibility = "hidden"; // Hide step 2
+    document.getElementById("step3").style.visibility = "hidden"; // Hide step 3
+    document.getElementById("step4").style.visibility = "hidden"; // Hide step 4
     
     function parseTemplate() {
       const str = document.getElementById("template").value;
@@ -58,22 +69,43 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
       var paramFormTableHTML = "<table>";
       for (let i = 0; i < arr.length; i++) {
         // Each row has inputs for min max and step 
-        paramFormTableHTML += '<tr><td>' + arr[i][0] +':</td><td>min value:<input type="number" id="param' + i + 'min" name="param' + i + 'min"></td>';
-        paramFormTableHTML += '<td>max value:<input type="number" id="param' + i + 'max" name="param' + i + 'max"></td>';
-        paramFormTableHTML += '<td>increment by:<input type="number" id="param' + i + 'step" name="param' + i + 'step"></td></tr>';
+        paramFormTableHTML += '<tr><td>' + arr[i][0] +':</td><td>min value:<input type="number" id="param' + i + 'min" name="param' + i + 'min" size="3"></td>';
+        paramFormTableHTML += '<td>max value:<input type="number" id="param' + i + 'max" name="param' + i + 'max" size="3"></td>';
+        paramFormTableHTML += '<td>increment by:<input type="number" id="param' + i + 'step" name="param' + i + 'step" size="3"></td></tr>';
       }
-      paramFormTableHTML += '<tr><td colspan=3>exclude items if answer: <select id="excludeIfOperator" name="excludeIfOperator"><option value="lt">\<</option><option value="eq">=</option><option value="gt">\></option></select><input type="number" id="excludeIfValue" name="excludeIfValue"></td></tr>';
-      paramFormTableHTML += '<tr><td colspan=3>answer formula:<input type="number" id="answerFormula" name="answerFormula"></td></tr></table>';
-      paramFormTableHTML += '<button type="button" onclick="gotoStep3()">Next</button><br><br>';
+      paramFormTableHTML += '<tr><td colspan=3>Exclude items if answer: <select id="excludeIfOperator" name="excludeIfOperator"><option value="lt">\<</option><option value="eq">=</option><option value="gt">\></option></select>&nbsp;<input type="number" id="excludeIfValue" name="excludeIfValue"></td></tr>';
+      paramFormTableHTML += '<tr><td colspan=3><input type="checkbox" id="excludeNegatives" name="excludeNegatives" value="excludeNegatives"><label for="excludeNegatives">Exclude items with negative number answers.</label><br></td></tr>';
+      paramFormTableHTML += '<tr><td colspan=3><input type="checkbox" id="excludeFractionals" name="excludeFractionals" value="excludeFractionals"><label for="excludeFractionals">Exclude items with fractional number answers.</label><br></td></tr>';
+      paramFormTableHTML += '<tr><td colspan=3>Answer formula:<input type="text" id="answerFormula" name="answerFormula"></td></tr></table>';
+      
+      // @TODO Add something for adding a sequence of hints for this item.
+      // Or give example of how to make that part of the original template in a standard way.
+    
       document.getElementById("paramForm").innerHTML = paramFormTableHTML;
       document.getElementById("step2").style.visibility = "visible"; // Show step 2
     }
   
-
     function gotoStep3() {
+
+      // Put min, max, step values into the array.
+
+      // Validate ranges and rules, including the answer formula.
+
+      // Display step 3 --- the metadata form
       document.getElementById("step3").style.visibility = "visible"; // Show step 3
     }
+
+    function gotoStep4() {
+      // Calculate the number of items that will be produced.
+
+      // Display the stats and proceed button.
+      document.getElementById("step4").style.visibility = "visible"; // Show step 4
+    }
     
+    function gotoStep4() {
+      // Generate the items.
+    }
+
     function calculate() {
       var a_min = parseInt(document.getElementById("a").min);
       var result = "";
@@ -82,12 +114,11 @@ a, b, and c using nested for loops. It then calculates the sum of each combinati
           for (var c = c_min; c <= c_max; c++) {
             var d = a + b + c;
             result += "<p>" + a + " + " + b + " + " + c + " = " + d + "</p>";
+          }
+        }
       }
-    }
-  }
-
-  document.getElementById("d").innerHTML = result;
-}
+      document.getElementById("output").innerHTML = result;
+      }
 </script>
 
 </body>
