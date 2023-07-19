@@ -40,6 +40,25 @@
   </div>
 
   <br><br>
+  Example output of 1 item:<br>
+  <textarea style="background-color: lightgrey" rows="13" cols="60" readonly>
+  &lt;item&gt;
+  &nbsp;&lt;p&gt;Solve for x: 1 + 1 + 1 = x&lt;/p&gt;
+  &nbsp;&lt;answer-widget&gt;&lt;/answer-widget&gt;
+
+  &nbsp;&lt;!-- metadata for this item --&gt;
+  &lt;script type="application/ld+json"&gt; {
+    &nbsp;&nbsp; "@Context": "http://example.org",
+    &nbsp;&nbsp; "xApiProfileUrl": "http://example.org",
+    &nbsp;&nbsp; ...(other optional metadata here)...
+  &nbsp;}
+  &nbsp;&lt;/script&gt;
+  
+  &nbsp;&lt;!-- instrumentation widget: if we host items it can be a .js include&gt;<br>
+  &lt;script src="xapiWidget.js"&gt;&lt;/script&gt;
+  &lt;/item&gt;
+</textarea>
+
   <div id="output">--result here--</div>
 
   <script>
